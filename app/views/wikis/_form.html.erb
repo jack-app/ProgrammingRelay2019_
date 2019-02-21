@@ -20,7 +20,7 @@
   <div id='editor'>
   <textarea name="wiki[body]" id="n" class="form-control" rows="20" v-model='input' debounce='50'></textarea>
   <div class="di_inline_t preview">
-    <div v-html='input | marked' style: :"width: 650px;"></div>
+    <div v-html='input | marked' style="width: 650px;"></div>
   </div>
 </div>
   <!-- <div class="form-group">
@@ -38,7 +38,7 @@
  new Vue({
  el: '#editor',
  data: {
- input: '<%== j @post.content %>',
+ input: '<%== j @wiki.body %>',
  },
  filters: {
  marked: marked,
