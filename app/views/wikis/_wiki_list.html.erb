@@ -1,5 +1,5 @@
 <% if wikis.present? %>
     <% wikis.each do |wiki| %>
-        <%= link_to(wiki.title, wiki.link) %>
+        <li><%= link_to(wiki.title, wiki.link) %></li>
     <% end %>
 <% end %>
