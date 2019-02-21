@@ -18,7 +18,7 @@
     <%= form.text_field :title, class: "form-control" %>
   </div>
   <div id='editor'>
-  <textarea name="wiki[body]" id="n" class="form-control" rows="20" v-model='input' debounce='50'></textarea>
+  <textarea name="wiki[body]" id="n" class="form-control" default=<%= wiki.body%> rows="20" v-model='input' debounce='50'></textarea>
   <div class="di_inline_t preview">
     <div v-html='input | marked' style="width: 650px;"></div>
   </div>
