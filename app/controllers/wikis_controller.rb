@@ -61,6 +61,11 @@ class WikisController < ApplicationController
     end
   end
 
+  def search
+    word = params[:search_word]
+    @results = Wiki.search_with(word)
+  end 
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_wiki
