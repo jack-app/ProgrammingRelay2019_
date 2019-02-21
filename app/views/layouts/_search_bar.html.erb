@@ -1,6 +1,8 @@
 <div>
     <%= form_tag wiki_search_path do %>
-        <%= text_field_tag("search_word", "", placeholder: "検索", maxlength: 100)%>
-        <%= submit_tag("提出") %>
+        <%= text_field_tag("search_word", "", placeholder: "検索したい単語を入力", maxlength: 100)%>
+        <%= button_tag type: 'submit' do %>
+          検索 <i class="fas fa-search"></i>
+        <% end %>
     <% end %>
 </div>
