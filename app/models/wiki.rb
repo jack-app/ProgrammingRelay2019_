@@ -2,7 +2,6 @@ class Wiki < ApplicationRecord
 
   validates :title, presence: true, uniqueness: true
   validates :body, presence: true
-  before_save :save_body
 
     def self.search_with(word)
       Wiki.where("title LIKE ?", "%#{word}%")
@@ -14,32 +13,24 @@ class Wiki < ApplicationRecord
       end
     end
 
-    def save_body
-      real_body = self.body
-      puts "fucking chiocolate jesus"
-      real_body = add_link(real_body)
+    def display_body
+      display_body = self.body
+      display_body = add_link(display_body)
       #real_body = 関数(real_body)でできるようにして
-      self.update(body: real_body)
+      return display_body.html_safe
     end
 
     private
     def add_link(body)
       nm = Natto::MeCab.new
-      puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-      puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-      puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-      puts nm.enum_parse(body)
-      puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-      puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-      puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+      all_wikis = Wiki.select("title")
+      gsub_body = body
       nm.enum_parse(body).each{|n|
         break if n.is_eos?
-        if n.feature.start_with?("名詞") && Wiki.find_by(title: n.surface).present?
-          # body = n.feature.start_with?("名詞") && Wiki.find_by(title: n.surface).present?
-          puts n
-          #ここで書き換えて
+        if n.feature.start_with?("名詞") && all_wikis.select{|wiki| wiki.title == n.surface}.present?
+          gsub_body = gsub_body.gsub(/#{n.surface}/, "<a href='/wikis/#{n.surface}'>#{n.surface}</a>")
         end
       }
-      return body
+      return gsub_body
     end
 end
