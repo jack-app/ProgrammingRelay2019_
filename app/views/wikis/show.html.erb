@@ -10,5 +10,5 @@
   <%= @wiki.body %>
 </p>
 
-<%= link_to 'Edit', edit_wiki_path(@wiki) %> |
+<td><%= link_to 'Edit', "#{@wiki.link}/edit" %></td> |
 <%= link_to 'Back', wikis_path %>

@@ -1,27 +1,26 @@
-<%= form_with(model: wiki, local: true) do |form| %>
-  <% if wiki.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(wiki.errors.count, "error") %> prohibited this wiki from being saved:</h2>
-
-      <ul>
-      <% wiki.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
+<%= form_with(model: wiki, local: true, url: wiki.link) do |form| %>
+  <% if wiki.present? %>
+    <% if wiki.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(wiki.errors.count, "error") %> prohibited this wiki from being saved:</h2>
+        <ul>
+        <% wiki.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
   <% end %>
 
-  <div class="field">
+
+  <div class="form-group">
     <%= form.label :title %>
-    <%= form.text_field :title %>
+    <%= form.text_field :title, class: "form-control" %>
   </div>
-
-  <div class="field">
+  <div class="form-group">
     <%= form.label :body %>
-    <%= form.text_area :body %>
+    <%= form.text_area :body, class: "form-control" %>
   </div>
+  <%= form.submit class: "btn btn-primary"%>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
 <% end %>
