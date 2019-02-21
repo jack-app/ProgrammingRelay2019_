@@ -64,3 +64,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # mecabを使う(形態素解析)
 gem 'mecab'
 gem 'natto'
+#markdown
+gem 'qiita-markdown'
+gem 'github-linguist'
