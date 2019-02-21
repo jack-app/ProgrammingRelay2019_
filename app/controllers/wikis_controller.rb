@@ -28,7 +28,7 @@ class WikisController < ApplicationController
 
     respond_to do |format|
       if @wiki.save
-        format.html { redirect_to @wiki, notice: 'Wiki was successfully created.' }
+        format.html { redirect_to @wiki.link, notice: 'Wiki was successfully created.' }
         format.json { render :show, status: :created, location: @wiki }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class WikisController < ApplicationController
   def update
     respond_to do |format|
       if @wiki.update(wiki_params)
-        format.html { redirect_to @wiki, notice: 'Wiki was successfully updated.' }
+        format.html { redirect_to @wiki.link, notice: 'Wiki was successfully updated.' }
         format.json { render :show, status: :ok, location: @wiki }
       else
         format.html { render :edit }
@@ -69,7 +69,7 @@ class WikisController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_wiki
-      @wiki = Wiki.find(params[:id])
+      @wiki = Wiki.find_by(title: params[:title])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
