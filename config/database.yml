@@ -8,10 +8,27 @@ default: &default
   adapter: sqlite3
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
-
 development:
   <<: *default
-  database: db/development.sqlite3
+  database: d95air95gvq5h0
+
+  # The specified database role being used to connect to postgres.
+  # To create additional roles in postgres see `$ createuser --help`.
+  # When left blank, postgres will use the default role. This is
+  # the same name as the operating system user that initialized the database.
+  username: wwyafeurcekfqm
+
+  # The password associated with the postgres role (username).
+  password: 3f206b347d085e9befa8b35a1e537d89127a851612275d9917dd363b608de703
+
+  # Connect on a TCP socket. Omitted by default since the client uses a
+  # domain socket that doesn't need configuration. Windows does not have
+  # domain sockets, so uncomment these lines.
+  host: ec2-23-21-130-182.compute-1.amazonaws.com
+
+  # The TCP port the server listens on. Defaults to 5432.
+  # If your server runs on a different port number, change accordingly.
+  port: 5432
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
