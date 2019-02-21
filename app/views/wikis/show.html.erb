@@ -7,7 +7,7 @@
 
 <p>
   <strong>Body:</strong>
-  <%= @wiki.display_body %>
+  <%= qiita_markdown(@wiki.display_body) %>
 </p>
 
 <td><%= link_to 'Edit', "#{@wiki.link}/edit" %></td> |

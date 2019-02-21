@@ -28,7 +28,7 @@ class Wiki < ApplicationRecord
       nm.enum_parse(body).each{|n|
         break if n.is_eos?
         if n.feature.start_with?("名詞") && all_wikis.select{|wiki| wiki.title == n.surface}.present?
-          gsub_body = gsub_body.gsub(/#{n.surface}/, "<a href='/wikis/#{n.surface}'>#{n.surface}</a>")
+          gsub_body = gsub_body.gsub(/#{n.surface}/, "[#{n.surface}](/wikis/#{n.surface})")
         end
       }
       return gsub_body
