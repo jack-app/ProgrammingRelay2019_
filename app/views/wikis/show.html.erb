@@ -4,14 +4,9 @@
   <%= @wiki.title %>
 </H2>
 
-<<<<<<< HEAD
-<p style="font-size:1.1em">
-  <%= @wiki.display_body %>
-=======
 <p>
   <strong>Body:</strong>
   <%= qiita_markdown(@wiki.display_body) %>
->>>>>>> markdown
 </p>
 
 <td><%= link_to 'Edit', "#{@wiki.link}/edit", class: "btn btn-primary", style: "color: white"%></td> |
