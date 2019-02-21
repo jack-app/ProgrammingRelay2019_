@@ -1,14 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
+<H2 style="font-weight: bold">
   <%= @wiki.title %>
-</p>
+</H2>
 
-<p>
-  <strong>Body:</strong>
+<p style="font-size:1.1em">
   <%= @wiki.display_body %>
 </p>
 
-<td><%= link_to 'Edit', "#{@wiki.link}/edit" %></td> |
-<%= link_to 'Back', wikis_path %>
+<td><%= link_to 'Edit', "#{@wiki.link}/edit", class: "btn btn-primary", style: "color: white"%></td> |
+<%= link_to 'Back', wikis_path, class: "btn btn-primary", style: "color: white" %>
